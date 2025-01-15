@@ -23,13 +23,7 @@ path = r'C:\Users\tsran\PycharmProjects\basicOCR\teste\*.*' #label image folder 
 for file in glob.glob(path):
     print(file)     #just stop here to see all file names printed
     img= cv2.imread(file, 0)  #now, we can read each file since we have the full path
-    (thresh, img) = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
-    kernel = np.ones((1, 1), np.uint8)
-    img = cv2.dilate(img, kernel, iterations=1)
-    img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
-    img = cv2.medianBlur(img, 3)
     img = cv2.resize(img, (SIZE, SIZE))
-    img = cv2.bitwise_not(img)
     images_list.append(img)
 
 images_list = np.array(images_list)
@@ -39,6 +33,10 @@ img_number = 1
 for image in range(images_list.shape[0]):
     input_img = images_list[image,:,:]  #Grey images. For color add another dim.
     smoothed_image = img_as_ubyte(gaussian(input_img, sigma=1, mode='constant', cval=0.0))
+    (thresh, smoothed_image) = cv2.threshold(smoothed_image, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+    kernel = np.ones((1, 1), np.uint8)
+    img = cv2.dilate(smoothed_image, kernel, iterations=1)
+    img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
     cv2.imwrite(r'C:\Users\tsran\PycharmProjects\basicOCR\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image)
     img_number +=1
 
