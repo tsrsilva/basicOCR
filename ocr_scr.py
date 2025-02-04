@@ -3,8 +3,6 @@
 # openCV
 # scikit-image
 # easyocr
-# os
-# skimage
 # pip install --force-reinstall -v "Pillow==9.5.0" ##Downgrade Pillow to 9.5.0
 
 #Import libraries
@@ -17,7 +15,7 @@ from skimage import img_as_ubyte
 images_list = []
 SIZE = 512
 
-path = r'C:\Users\tsran\PycharmProjects\basicOCR\teste\*.*' #label image folder path
+path = r'C:\Path_to_OCR\Input\*.*' #label input folder path
 
 #First create a stack array of all images
 for file in glob.glob(path):
@@ -37,10 +35,10 @@ for image in range(images_list.shape[0]):
     kernel = np.ones((1, 1), np.uint8)
     img = cv2.dilate(smoothed_image, kernel, iterations=1)
     img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
-    cv2.imwrite(r'C:\Users\tsran\PycharmProjects\basicOCR\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image)
+    cv2.imwrite(r'C:\Path_to_OCR\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image)
     img_number +=1
 
-    if not cv2.imwrite(r'C:\Users\tsran\PycharmProjects\basicOCR\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image):
+    if not cv2.imwrite(r'C:\Path_to_OCR\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image):
         raise Exception("Could not write image")
 
 
@@ -49,7 +47,7 @@ for image in range(images_list.shape[0]):
 import easyocr
 import os
 
-smooth = r'C:\Users\tsran\PycharmProjects\basicOCR\smoothed'
+smooth = r'C:C:\Path_to_OCR\smoothed'
 
 jpgnames = []
 result=[]
@@ -73,7 +71,7 @@ while i < len(jpgnames):
     print(i)
 print(result)
 
-f = open(r'C:\Users\tsran\PycharmProjects\basicOCR\text\label_name.txt', "w", encoding="utf-8")  # .txt save path
+f = open(r'C:\Path_to_OCR\text\label_name.txt', "w", encoding="utf-8")  # .txt save path
 for line in result:
 
     f.write(line + '\n')
