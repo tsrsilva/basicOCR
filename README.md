@@ -27,7 +27,7 @@ All dependencies can be installed via pip or conda. EasyOCR works best if you ha
 ## Configuration
 
 Before starting the character recognition process, you will need to determine the
-input and output directories in ocr_scr.py. Open the file with your favorite text
+input directory in ocr_scr.py. Open the file with your favorite text
 editor and call the input path (*i.e.* the directory where your files that will be OCRed are located).
 
 <a name="running"></a>
