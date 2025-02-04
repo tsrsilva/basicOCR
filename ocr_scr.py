@@ -33,8 +33,8 @@ for image in range(images_list.shape[0]):
     smoothed_image = img_as_ubyte(gaussian(input_img, sigma=1, mode='constant', cval=0.0))
     (thresh, smoothed_image) = cv2.threshold(smoothed_image, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
     kernel = np.ones((1, 1), np.uint8)
-    smoothed_img2 = cv2.dilate(smoothed_image, kernel, iterations=1)
-    smoothed_img3 = cv2.morphologyEx(smoothed_img2, cv2.MORPH_CLOSE, kernel)
+    smoothed_image2 = cv2.dilate(smoothed_image, kernel, iterations=1)
+    smoothed_image3 = cv2.morphologyEx(smoothed_image2, cv2.MORPH_CLOSE, kernel)
     cv2.imwrite(r'path\to\the\root\directory\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image3)
     img_number +=1
 
