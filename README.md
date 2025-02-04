@@ -31,12 +31,19 @@ Make sure to select the right CUDA version you have. If you intend to run on CPU
 Before starting the character recognition process, you will need to determine the
 input directory in ocr_scr.py. Open the file with your favorite text
 editor and call the input path (*i.e.* the directory where your files that will be OCRed are located).
-Image preprocessing runs through scikit-image (a.k.a. skimage) and requires some tinkering in the
-ocr_scr.py if your results are suboptimal. You can changeit *ad libitum* by opening the .py file in your IDE 
-of preference and changing the following lines:
+Image preprocessing runs through scikit-image (a.k.a. skimage) and cv2, and requires some tinkering in the
+ocr_scr.py if your results are suboptimal. You can modify it *ad libitum* by opening the ocr_scr.py file in your text editor 
+of preference and changing the lines containing the ```smoothed_image``` arguments:
 
 ```
+input_img = images_list[image,:,:]  #Grey images. For color add another dim.
+    smoothed_image = img_as_ubyte(gaussian(input_img, sigma=1, mode='constant', cval=0.0))
+    (thresh, smoothed_image) = cv2.threshold(smoothed_image, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+    kernel = np.ones((1, 1), np.uint8)
+    smoothed_image2 = cv2.dilate(smoothed_image, kernel, iterations=1)
+    smoothed_image3 = cv2.morphologyEx(smoothed_image2, cv2.MORPH_CLOSE, kernel)
 ```
+
 
 <a name="running"></a>
 ## Running
