@@ -15,7 +15,7 @@ from skimage import img_as_ubyte
 images_list = []
 SIZE = 512
 
-path = r'C:\Path_to_OCR\Input\*.*' #label input folder path
+path = r'path\to\the\input\directory\*.*' #label input folder path
 
 #First create a stack array of all images
 for file in glob.glob(path):
@@ -33,12 +33,12 @@ for image in range(images_list.shape[0]):
     smoothed_image = img_as_ubyte(gaussian(input_img, sigma=1, mode='constant', cval=0.0))
     (thresh, smoothed_image) = cv2.threshold(smoothed_image, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
     kernel = np.ones((1, 1), np.uint8)
-    img = cv2.dilate(smoothed_image, kernel, iterations=1)
-    img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
-    cv2.imwrite(r'C:\Path_to_OCR\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image)
+    smoothed_img2 = cv2.dilate(smoothed_image, kernel, iterations=1)
+    smoothed_img3 = cv2.morphologyEx(smoothed_img2, cv2.MORPH_CLOSE, kernel)
+    cv2.imwrite(r'path\to\the\root\directory\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image3)
     img_number +=1
 
-    if not cv2.imwrite(r'C:\Path_to_OCR\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image):
+    if not cv2.imwrite(r'path\to\the\root\directory\smoothed\smoothed_image{0}.jpg'.format(str(img_number)), smoothed_image):
         raise Exception("Could not write image")
 
 
@@ -47,7 +47,7 @@ for image in range(images_list.shape[0]):
 import easyocr
 import os
 
-smooth = r'C:C:\Path_to_OCR\smoothed'
+smooth = r'path\to\the\root\directory\smoothed'
 
 jpgnames = []
 result=[]
@@ -71,7 +71,7 @@ while i < len(jpgnames):
     print(i)
 print(result)
 
-f = open(r'C:\Path_to_OCR\text\label_name.txt', "w", encoding="utf-8")  # .txt save path
+f = open(r'path\to\the\root\directory\text\label_name.txt', "w", encoding="utf-8")  # .txt save path
 for line in result:
 
     f.write(line + '\n')
