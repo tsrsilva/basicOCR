@@ -21,7 +21,7 @@ To properly run this script, you will need to install three dependencies:
   * [EasyOCR](https://www.jaided.ai/easyocr/)
   * [Pillow 9.5.0v](https://pypi.org/project/pillow/9.5.0/)
 
-All dependencies can be installed via pip or conda. EasyOCR works best if you have a CUDA-compatible GPU. For Windows, you may need to install pytorch manually. Please follow the instructions from the [Pytorch website](https://pytorch.org). Make sure to select the right CUDA version you have. If you intend to run on CPU mode only, select CUDA = None.
+All dependencies can be installed via pip or conda. EasyOCR works best if you have a CUDA-compatible GPU. For Windows, you may need to install pytorch manually. Please follow the instructions from the [Pytorch website](https://pytorch.org/get-started/locally/). Make sure to select the right CUDA version you have. If you intend to run on CPU mode only, select CUDA = None.
 
 <a name="configuration"></a>
 ## Configuration
