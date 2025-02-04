@@ -1,4 +1,4 @@
-![MIT license]([![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT))
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # BasicOCR
 An ongoing project to create a pipeline to optimize Optical Character Recognition (OCR) of specimen labels.
