@@ -13,7 +13,7 @@ This is a work in progress.
 <a name="dependencies"></a>
 ## Dependencies
 
-To properly run this script, you will need to install three dependencies:
+To properly run this script, you will need to install the following dependencies:
 
   * [Glob](https://docs.python.org/3/library/glob.html)
   * [OpenCV](https://docs.opencv.org/4.x/index.html)
