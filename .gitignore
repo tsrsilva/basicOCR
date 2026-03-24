@@ -1,0 +1,46 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+*.dist-info/
+build/
+
+# =========================
+# Virtual environments
+# =========================
+env/
+checker_env/
+.venv/
+venv/
+
+# =========================
+# Project outputs
+# =========================
+outputs/
+
+# =========================
+# IDEs and editors
+# =========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Logs and temp files
+# =========================
+*.log
+*.tmp
+*.bak
